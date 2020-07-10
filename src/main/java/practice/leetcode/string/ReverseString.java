@@ -14,19 +14,18 @@ package practice.leetcode.string;
 public class ReverseString {
 
 	public static void main(String[] args) {
-		char[] s = { 'H', 'a', 'n', 'n', 'a','h'};
+		char[] s = { 'H', 'a', 'n', 'n', 'a', 'h' };
 		ReverseString.reverseString(s);
 	}
 
 	public static void reverseString(char[] s) {
-			for (int i = 0, j = s.length - 1; i < s.length/2; i++, j--) {
-				char temp = s[j];
-				s[j] = s[i];
-				s[i] = temp;
-			}
+		for (int i = 0, j = s.length - 1; i < s.length / 2; i++, j--) {
+			char temp = s[j];
+			s[j] = s[i];
+			s[i] = temp;
+		}
 		for (char ch : s) {
 			System.out.print(ch + " ");
 		}
 	}
-
 }
