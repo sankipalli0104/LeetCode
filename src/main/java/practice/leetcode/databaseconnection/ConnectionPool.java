@@ -49,15 +49,15 @@ public class ConnectionPool {
     public static void main(String[] args) throws Exception {
         ConnectionPool demo = new ConnectionPool();
         DataSource dataSource = demo.setUp();
-        demo.printStatus();
+        //demo.printStatus();
 
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Employee")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Employee WHERE EmployeeID = '1001'")) {
             demo.printStatus();
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                System.out.println("FirstName: " + rs.getString("FirstName"));
+                System.out.printf("FirstName: %2s || LastName: %2s \n",rs.getString("FirstName"),rs.getString("LastName"));
             }
         }
 
