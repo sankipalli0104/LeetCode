@@ -12,7 +12,7 @@ public class PatternsPrinting {
 	}
 
 	public static void numbersPatternPrinting() {
-		for (int i = 1; i <= 6; i++) {
+		for (int i = 1; i <= 5; i++) {
 			for (int j = 1; j <= i; j++) {
 				System.out.print(j + " ");
 			}
@@ -21,7 +21,7 @@ public class PatternsPrinting {
 	}
 
 	public static void charactersPatternPrinting() {
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 1; i <= 6; i++) {
 			char c = 65;
 			for (int j = 1; j <= i; j++) {
 				System.out.print(c + " ");

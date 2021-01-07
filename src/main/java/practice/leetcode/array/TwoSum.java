@@ -1,4 +1,5 @@
 package practice.leetcode.array;
+
 /*
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
  * You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -7,16 +8,19 @@ package practice.leetcode.array;
  */
 public class TwoSum {
 	public static void main(String[] args) {
-		TwoSum twoSum =  new TwoSum();
-		int nums[] = {2,7,11,5};
-		int target = 16;
-		int[] arr = twoSum.twoSum(nums, target);
+		TwoSum twoSum = new TwoSum();
+		int nums[] = { 2, 7, 11, 5 };
+		int target = 18;
+		int[] result = TwoSum.twoSumeMethod(nums, target);
+		
+//		int[] arr = twoSum.twoSum(nums, target);
 		System.out.print("{ ");
-		for(int i: arr) {
+		for(int i: result) {
 			System.out.print(i+" ");
 		}
 		System.out.print("}");
 	}
+
 	public int[] twoSum(int[] nums, int target) {
 		int index_arr[] = new int[2];
 		for (int i = 0; i < nums.length; i++) {
@@ -32,4 +36,15 @@ public class TwoSum {
 		}
 		return index_arr;
 	}
+
+	public static int[] twoSumeMethod(int[] nums, int target) {
+		for (int i = 0; i < nums.length; i++) {
+			for (int j = i + 1; j < nums.length; j++) {
+				if (target == nums[i] + nums[j])
+					return new int[] { i, j };
+			}
+		}
+		throw new IllegalArgumentException("No Such combination");
+	}
+
 }
