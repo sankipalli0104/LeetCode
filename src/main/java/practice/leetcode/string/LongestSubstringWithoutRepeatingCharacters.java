@@ -1,5 +1,8 @@
 package practice.leetcode.string;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /*
  * Given a string s, find the length of the longest substring without repeating characters.
  * Example 1:
@@ -10,25 +13,45 @@ package practice.leetcode.string;
 public class LongestSubstringWithoutRepeatingCharacters {
 
 	public static void main(String[] args) {
-
-		int i = lengthOfLongestSubstring("abcabcbb");
-		System.out.println("Longest substring without repeating characters "+i);
+		System.out.println(lengthOfLongestSubstring("dvdf"));
 	}
 
 	public static int lengthOfLongestSubstring(String s) {
-		int count= 0;
-		for(int t= 0; t < s.length()-1; t++) {
-			//char ch = s.charAt(t);
-			if(s.charAt(t) != s.charAt(t+1)) {
-				count++;
+		int ans = 0;
+		for (int i = 0; i < s.length(); i++) {
+			for (int j = i + 1; j <= s.length(); j++) {
+				if (allUnique(s, i, j)) {
+					ans = Math.max(ans, j - i);
+				}
 			}
-			
-			//	}else {
-//				count = 0;
-//			}
-
 		}
-		System.out.println(count);
-		return count;
+		return ans;
+	}
+
+	public static boolean allUnique(String s, int start, int end) {
+		Set<Character> set = new HashSet<>();
+		for (int i = start; i < end; i++) {
+			Character ch = s.charAt(i);
+			if (set.contains(ch))
+				return false;
+			set.add(ch);
+		}
+		return true;
+	}
+
+	public static int lengthOfLongestSubstringMethod2(String s) {
+		int n = s.length();
+		Set<Character> set = new HashSet<>();
+		int ans = 0, i = 0, j = 0;
+		while (i < n && j < n) {
+			if (!set.contains(s.charAt(j))) {
+				set.add(s.charAt(j++));
+				ans = Math.max(ans, j - i);
+			} else {
+				set.remove(s.charAt(i++));
+			}
+		}
+		return ans;
+
 	}
 }
